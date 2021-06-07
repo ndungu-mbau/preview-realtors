@@ -7,17 +7,6 @@ const router = Router()
 
 router.get('/', async (req, res, next) => {
   const qs = await agentController.queryset({ limit: 4, sort: 'views' })
-  // .sort('views')
-  // .limit(4)
-  // .exec()
-  console.log(qs, typeof qs)
-  // const data = qs.sort('views').limit(4).exec()
-
-  // console.log(data)
-  // const individualProperties = await individualPropertyController.queryset({
-  //   property: { $in: data.map(({ _id }) => _id) },
-  //   status: 'vacant'
-  // })
 
   res.render('about', { title: 'About', agents: qs })
 })

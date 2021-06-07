@@ -8,9 +8,9 @@ const router = Router()
 
 router.get('/', async (req, res, next) => {
   const qs = await propertyController.queryset({
-    fields: { views: { $gte: 10 } },
+    query: { views: { $gte: 10 } },
     sort: 'views',
-    limit: 2,
+    limit: 4,
   })
 
   // const individualProperties = await individualPropertyController.queryset({
