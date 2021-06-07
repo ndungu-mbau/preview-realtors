@@ -97,7 +97,7 @@ block content
                       span.color-text-a= property.property.agent.email
               .col-md-12.col-lg-4
                 .property-contact
-                  form.form-a(action='/api/feedback' method='post')
+                  form.form-a.php-email-form(action='/api/feedback' method='post')
                     .row
                       .col-md-12.mb-1
                         .form-group
@@ -111,6 +111,11 @@ block content
                       .col-md-12.mb-1
                         .form-group
                           textarea#textMessage.form-control(placeholder='Comment *' name='message' cols='45' rows='8' required='')
+                      .col-md-12.my-3
+                        .mb-3
+                          .loading Loading
+                          .error-message
+                          .sent-message Your message has been sent. Thank you!
                       .col-md-12.mt-3
                         button.btn.btn-a(type='submit') Send Message
     // End Property Single
