@@ -13,12 +13,22 @@ router.get('/', async (req, res, next) => {
     limit: 4,
   })
 
+  const properties = await propertyController.queryset({})
+  const for_sale = properties.filter((property) => property.status === 'sale')
+  const for_rent = properties.filter((property) => property.status === 'rent')
+
   // const individualProperties = await individualPropertyController.queryset({
   //   property: { $in: data.map(({ _id }) => _id) },
   //   status: 'vacant'
   // })
 
-  res.render('index', { title: 'Home', home_active: true, popular: qs })
+  res.render('index', {
+    title: 'Home',
+    popular: qs,
+    top: qs,
+    for_sale: for_sale.length,
+    for_rent: for_rent.length,
+  })
 })
 
 export default router

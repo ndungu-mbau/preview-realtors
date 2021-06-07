@@ -9,23 +9,21 @@ block content
   // ======= Intro Section =======
   .intro.intro-carousel.swiper-container.position-relative
     .swiper-wrapper
-      .swiper-slide.carousel-item-a.intro-item.bg-image(style='background-image: url(/img/slide-1.jpg)')
-        .overlay.overlay-a
-        .intro-content.display-table
-          .table-cell
-            .container
-              .row
-                .col-lg-8
-                  .intro-body
-                    p.intro-title-top Karen, Kenya
-                    h1.intro-title.mb-4
-                      span.color-b 204 
-                      | Mount 
-                      br
-                      | Olive Road Two
-                    p.intro-subtitle.intro-price
-                      a(href='/property-single.html')
-                        span.price-a Rent | Ksh 120,000
+      each property in top
+        .swiper-slide.carousel-item-a.intro-item.bg-image(style=`background-image: url(${property.image.url})`)
+          .overlay.overlay-a
+          .intro-content.display-table
+            .table-cell
+              .container
+                .row
+                  .col-lg-8
+                    .intro-body
+                      h1.intro-title.mb-4
+                        span.color-b= property.title
+                      p.intro-subtitle.intro-price
+                        a(href=`/properties/${property._id}`)
+                          span.price-a #{property.status} | View
+                            span.bi.bi-chevron-right
     .swiper-pagination
   main#main
     // ======= Latest Properties Section =======
@@ -37,7 +35,7 @@ block content
               .title-box
                 h2.title-a Latest Properties
               .title-link
-                a(href='property-grid.html')
+                a(href='/properties')
                   | All Property
                   span.bi.bi-chevron-right
         #property-carousel.swiper-container
@@ -51,10 +49,10 @@ block content
                     .card-overlay-a-content
                       .card-header-a
                         h2.card-title-a
-                          a(href='property-single.html')= title
+                          a(href=`/properties/${property._id}`)= property.title
                       .card-body-a
                         .price-box.d-flex
-                          span.price-a #{property.status} | $ 12.000
+                          span.price-a #{property.status}
                         a.link-a(href='#')
                           | Click here to view
                           span.bi.bi-chevron-right
@@ -69,20 +67,15 @@ block content
               .title-box
                 h2.title-a Our Properties
         .row
-          .col-xl-4.col-md-4
+          .col-xl-4.col-md-6
             .single_counter
               h3.display-4
-                span.color-b 20+
+                span.color-b #{for_sale}
               p Properties for sale
-          .col-xl-4.col-md-4
+          .col-xl-4.col-md-6
             .single_counter
               h3.display-4
-                span.color-b 15
-              p Properties already sold
-          .col-xl-4.col-md-4
-            .single_counter
-              h3.display-4
-                span.color-b 15
+                span.color-b #{for_rent}
               p Properties for rent
     // ======= Testimonials Section =======
     section.section-testimonials.section-t8.nav-arrow-a
