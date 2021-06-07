@@ -12,7 +12,7 @@ router.use('/uploads', uploads)
 router.use('/about', about)
 
 router.get('/contact', (req, res, next) => {
-  res.render('contact', { contact_active: true })
+  res.render('contact', { title: 'Contact', contact_active: true })
 })
 
 export default router

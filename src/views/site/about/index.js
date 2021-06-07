@@ -6,7 +6,7 @@ import agentController from '../../../controllers/agent'
 const router = Router()
 
 router.get('/', async (req, res, next) => {
-  const qs = await agentController.queryset({})
+  const qs = await agentController.queryset({ limit: 4, sort: 'views' })
   // .sort('views')
   // .limit(4)
   // .exec()
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
   //   status: 'vacant'
   // })
 
-  res.render('about', { title: 'About', home_active: true, agents: qs })
+  res.render('about', { title: 'About', agents: qs })
 })
 
 export default router
