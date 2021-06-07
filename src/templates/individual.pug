@@ -1,0 +1,117 @@
+extends layout/main
+
+include mixins/navbar.pug
+
+block head 
+  title #{title} | Preview Realtors
+
+block content
+  main#main
+    +navbar
+    // ======= Intro Single =======
+    section.intro-single
+      .container
+        .row
+          .col-md-12.col-lg-8
+            .title-single-box
+              h1.title-single
+                | #{property.property.title } - #{property.house_number }
+          .col-md-12.col-lg-4
+            nav.breadcrumb-box.d-flex.justify-content-lg-end(aria-label='breadcrumb')
+              ol.breadcrumb
+                li.breadcrumb-item
+                  a(href='/') Home
+                li.breadcrumb-item
+                  a(href='/properties') Properties
+                li.breadcrumb-item
+                  a(href=`/properties/${property.property._id}`)= property.property.title 
+                li.breadcrumb-item.active(aria-current='page')= property.house_number
+    // End Intro Single
+    // ======= Property Single =======
+    section.property-single.nav-arrow-b
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            #property-single-carousel.swiper-container
+              .swiper-wrapper
+                each picture in property.pictures
+                  .carousel-item-b.swiper-slide
+                    img(src=picture.url alt=picture.title)
+            .property-single-carousel-pagination.carousel-pagination
+        .row
+          .col-sm-12
+            .row.justify-content-between
+              .col-md-5.col-lg-4
+                .property-price.d-flex.justify-content-center.foo
+                  .card-header-c.d-flex
+                    .card-box-ico
+                      span.bi.bi-cash Ksh
+                    .card-title-c.align-self-center
+                      h5.title-c= property.price
+                        if property.property.status == "rent"
+                          | Per Month
+                .property-summary
+                  .row
+                    .col-sm-12
+                      .title-box-d.section-t4
+                        h3.title-d Quick Summary
+                  .summary-list
+                    ul.list
+                      li.d-flex.justify-content-between
+                        strong House Number:
+                        span= property.house_number
+                      li.d-flex.justify-content-between
+                        strong Property Type:
+                        span= property.property.status
+                      li.d-flex.justify-content-between
+                        strong Status:
+                        span= property.status
+                      li.d-flex.justify-content-between
+                        strong Area:
+                        span= property.area
+                          sup 2
+                      li.d-flex.justify-content-between
+                        strong Beds:
+                        span= property.beds
+                      li.d-flex.justify-content-between
+                        strong Baths:
+                        span= property.baths
+          .col-md-12
+            .row.section-t3
+              .col-sm-12
+                .title-box-d
+                  h3.title-d Contact Agent
+            .row
+              .col-md-6.col-lg-4
+                img.img-fluid(src=property.property.agent.profile.url alt=property.property.agent.full_name)
+              .col-md-6.col-lg-4
+                .property-agent
+                  h4.title-agent= property.property.agent.full_name
+                  p.color-text-a= property.property.agent.description
+                  ul.list-unstyled
+                    li.d-flex.justify-content-between
+                      strong Mobile:
+                      span.color-text-a= property.property.agent.phone
+                    li.d-flex.justify-content-between
+                      strong Email:
+                      span.color-text-a= property.property.agent.email
+              .col-md-12.col-lg-4
+                .property-contact
+                  form.form-a(action='/api/feedback' method='post')
+                    .row
+                      .col-md-12.mb-1
+                        .form-group
+                          input#inputName.form-control.form-control-lg.form-control-a(type='text' placeholder='Name *' required='' name='name')
+                      .col-md-12.mb-1
+                        .form-group
+                          input#inputEmail1.form-control.form-control-lg.form-control-a(type='email' placeholder='Email *' required='' name='email')
+                      .col-md-12.mb-1 
+                        .form-group
+                          input#inputEmail1.form-control.form-control-lg.form-control-a(name='subject' type='text' placeholder='Subject *' required='')
+                      .col-md-12.mb-1
+                        .form-group
+                          textarea#textMessage.form-control(placeholder='Comment *' name='message' cols='45' rows='8' required='')
+                      .col-md-12.mt-3
+                        button.btn.btn-a(type='submit') Send Message
+    // End Property Single
+    include includes/footer.pug

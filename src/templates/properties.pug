@@ -1,0 +1,76 @@
+extends layout/main.pug 
+
+include mixins/navbar.pug
+
+block head 
+  title #{title} | Preview Realtors 
+
+block content
+  main#main
+    +navbar
+    //  ======= Intro Single ======= 
+    section.intro-single
+      .container
+        .row
+          .col-md-12.col-lg-8
+            .title-single-box
+              h1.title-single Our Amazing Properties
+              span.color-text-a Grid Properties
+
+          .col-md-12.col-lg-4
+            nav.breadcrumb-box.d-flex.justify-content-lg-end(aria-label='breadcrumb')
+              ol.breadcrumb
+                li.breadcrumb-item
+                  a(href='/') Home   
+                li.breadcrumb-item.active(aria-current='page') Properties
+
+    //  End Intro Single
+    //  ======= Property Grid ======= 
+    section.property-grid.grid
+      .container
+        .row
+          .col-sm-12
+            .grid-option
+              form
+                select.custom-select
+                  option(selected) All
+                  option(value='1') New to Old
+                  option(value='2') For Rent
+                  option(value='3') For Sale
+          each property in properties
+            .col-md-4
+              .card-box-a.card-shadow
+                .img-box-a
+                  img.img-a.img-fluid(src=property.image.url alt=property.title)
+                .card-overlay
+                  .card-overlay-a-content
+                    .card-header-a
+                      h2.card-title-a
+                        a(href='#')= property.title
+                    .card-body-a
+                      .price-box.d-flex
+                        span.price-a= property.status
+                      a.link-a(href=`/properties/${property._id}`) Click here to view
+                        span.bi.bi-chevron-right
+                    .card-footer-a
+                      ul.card-info.d-flex.justify-content-around
+                        li
+                          h4.card-info-title Property ID
+                          span= property.property_id
+        .row
+          .col-sm-12
+            nav.pagination-a
+              ul.pagination.justify-content-end
+                li.page-item.disabled
+                  a.page-link(href='#' tabindex='-1')
+                    span.bi.bi-chevron-left
+                li.page-item
+                  a.page-link(href='#') 1
+                li.page-item.active
+                  a.page-link(href='#') 2
+                li.page-item
+                  a.page-link(href='#') 3
+                li.page-item.next
+                  a.page-link(href='#')
+                    span.bi.bi-chevron-right
+    include includes/footer.pug

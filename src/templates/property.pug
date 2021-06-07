@@ -1,0 +1,142 @@
+extends layout/main.pug 
+
+include mixins/navbar.pug 
+
+block head 
+  title #{title} | Preview Realtors
+
+block content
+  main#main
+    +navbar
+    //  ======= Intro Single ======= 
+    section.intro-single
+      .container
+        .row
+          .col-md-12.col-lg-8
+            .title-single-box
+              h1.title-single= property.title
+          .col-md-12.col-lg-4
+            nav.breadcrumb-box.d-flex.justify-content-lg-end(aria-label='breadcrumb')
+              ol.breadcrumb
+                li.breadcrumb-item
+                  a(href='/') Home
+                li.breadcrumb-item
+                  a(href='/properties') Properties
+                li.breadcrumb-item.active(aria-current='page')= property.title  
+    //  End Intro Single
+    //  ======= Property Single ======= 
+    section.property-single.nav-arrow-b
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            #property-single-carousel.swiper-container
+              .swiper-wrapper
+                each picture in property.pictures
+                  .carousel-item-b.swiper-slide
+                    img(src=picture.url alt=picture.title)
+            .property-single-carousel-pagination.carousel-pagination
+        .row
+          .col-sm-12
+            .row.justify-content-between
+              .col-md-5.col-lg-4
+                .property-summary
+                  .row
+                    .col-sm-12
+                      .title-box-d.section-t4
+                        h3.title-d Quick Summary
+                  .summary-list
+                    ul.list
+                      li.d-flex.justify-content-between
+                        strong Property ID:
+                        span= property.property_id  
+                      li.d-flex.justify-content-between
+                        strong Status:
+                        span= property.status  
+              .col-md-7.col-lg-7.section-md-t3
+                .row
+                  .col-sm-12
+                    .title-box-d
+                      h3.title-d Property Description
+                .property-description
+                  p.description.color-text-a= property.description
+
+                .row.section-t3
+                  .col-sm-12
+                    .title-box-d
+                      h3.title-d Amenities
+                .amenities-list.color-text-a
+                  ul.list-a.no-margin
+                    each amenity in property.amenities
+                      li= amenity.title
+          .col-md-10.offset-md-1
+            .row
+              .col-sm-12
+                .title-box-d
+                  h3.title-d Houses in Property
+            each prop in property.properties
+              .col-md-4
+                .card-box-a.card-shadow
+                  .img-box-a
+                    img.img-a.img-fluid(src=prop.picture.url alt=prop.picture.title)
+                  .card-overlay
+                    .card-overlay-a-content
+                      .card-header-a
+                        h2.card-title-a
+                          a(href='#')= property.title
+                      .card-body-a
+                        .price-box.d-flex
+                          span.price-a= property.status
+
+                        a.link-a(href=`/properties/${property._id}/property/${prop._id}`) Click here to view
+                          span.bi.bi-chevron-right
+                      .card-footer-a
+                        ul.card-info.d-flex.justify-content-around
+                          li
+                            h4.card-info-title Area
+                            span= prop.area
+                              sup 2
+                          li
+                            h4.card-info-title Beds
+                            span= prop.beds
+                          li
+                            h4.card-info-title Baths
+                            span= prop.baths
+          .col-md-12
+            .row.section-t3
+              .col-sm-12
+                .title-box-d
+                  h3.title-d Contact Agent    
+            .row
+              .col-md-6.col-lg-4
+                img.img-fluid(src=property.agent.profile.url alt=property.agent.full_name)
+              .col-md-6.col-lg-4
+                .property-agent
+                  h4.title-agent= property.agent.full_name
+                  p.color-text-a= property.agent.description
+                  ul.list-unstyled
+                    li.d-flex.justify-content-between
+                      strong Mobile:
+                      span.color-text-a= property.agent.phone
+                    li.d-flex.justify-content-between
+                      strong Email:
+                      span.color-text-a= property.agent.email
+              .col-md-12.col-lg-4
+                .property-contact
+                  form.form-a(action='/api/feedback' method='post')
+                    .row
+                      .col-md-12.mb-1
+                        .form-group
+                          input.form-control.form-control-lg.form-control-a#inputName(name='name' type='text' placeholder='Name *' required)
+                      .col-md-12.mb-1
+                        .form-group
+                          input.form-control.form-control-lg.form-control-a#inputEmail1(name='email' type='email' placeholder='Email *' required)
+                      .col-md-12.mb-1
+                        .form-group
+                          input.form-control.form-control-lg.form-control-a#inputSubject(name='subject' type='email' placeholder='Subject *' required)
+                      .col-md-12.mb-1
+                        .form-group
+                          textarea#textMessage.form-control(placeholder='Comment *' name='message' cols='45' rows='8' required)
+                      .col-md-12.mt-3
+                        button.btn.btn-a(type='submit') Send Message
+    //  End Property Single
+    include includes/footer.pug

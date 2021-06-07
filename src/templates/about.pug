@@ -1,0 +1,79 @@
+extends layout/main.pug
+
+block head
+  title #{title} | Preview Realtors
+
+block content
+  include mixins/navbar.pug 
+  +navbar('about')
+  main#main
+    // ======= Intro Single =======
+    section.intro-single
+      .container
+        .row
+          .col-md-12.col-lg-8
+            .title-single-box
+              h1.title-single We Offer Great Realtor Services at an Affordable Price.
+          .col-md-12.col-lg-4
+            nav.breadcrumb-box.d-flex.justify-content-lg-end(aria-label='breadcrumb')
+              ol.breadcrumb
+                li.breadcrumb-item
+                  a(href='/') Home
+                li.breadcrumb-item.active(aria-current='page')
+                  | About
+    // End Intro Single
+    // ======= About Section =======
+    section.section-about
+      .container
+        .row
+          .col-sm-12.position-relative
+            .about-img-box
+              img.img-fluid(src='/img/slide-about-1.jpg' alt='')
+            .sinse-box
+              h3.sinse-title
+                | Preview Realtors
+                span
+                br
+                |  Since 2015
+              p Providing realtor services
+          .col-md-12.section-t8.position-relative
+            .row
+              .col-md-6.col-lg-5
+                img.img-fluid(src='/img/about-2.jpg' alt='')
+              .col-md-6.col-lg-5.section-md-t3
+                .title-box-d
+                  h3.title-d
+                    | Our
+                    span.color-d Philosophy
+                p.color-text-a
+                  | House hunting. What a chore, right? Having to walk throughout entire neighborhoods just roaming around looking
+                  | for empty houses. It&apos;s a real drag
+                  | We believe that anyone should have access to realtor services, as opposed to house hunting themselves
+                  | That is why we started this firm, as a means to that end.
+    // =======Team Section =======
+    section.section-agents.section-t8
+      .container
+        .row
+          .col-md-12
+            .title-wrap.d-flex.justify-content-between
+              .title-box
+                h2.title-a Meet Our Team
+        .row
+          each agent in agents
+            .col-md-4
+              .card-box-d
+                .card-img-d
+                  img.img-d.img-fluid(src=agent.profile.url alt=agent.full_name)
+                .card-overlay.card-overlay-hover
+                  .card-header-d
+                    .card-title-d.align-self-center
+                      h3.title-d= agent.full_name
+                  .card-body-d
+                    p.content-d.color-text-a= agent.description
+                    .info-agents.color-a
+                      p
+                        strong Phone: #{agent.phone}
+                      p
+                        strong Email: #{agent.email}
+    // End #main
+    include includes/footer.pug

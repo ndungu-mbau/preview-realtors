@@ -1,0 +1,138 @@
+extends layout/main.pug
+include mixins/navbar.pug
+
+block head
+  title #{title} | Preview Realtors
+
+block content
+  +navbar('home')
+  // ======= Intro Section =======
+  .intro.intro-carousel.swiper-container.position-relative
+    .swiper-wrapper
+      .swiper-slide.carousel-item-a.intro-item.bg-image(style='background-image: url(/img/slide-1.jpg)')
+        .overlay.overlay-a
+        .intro-content.display-table
+          .table-cell
+            .container
+              .row
+                .col-lg-8
+                  .intro-body
+                    p.intro-title-top Karen, Kenya
+                    h1.intro-title.mb-4
+                      span.color-b 204 
+                      | Mount 
+                      br
+                      | Olive Road Two
+                    p.intro-subtitle.intro-price
+                      a(href='/property-single.html')
+                        span.price-a Rent | Ksh 120,000
+    .swiper-pagination
+  main#main
+    // ======= Latest Properties Section =======
+    section.section-property.section-t8
+      .container
+        .row
+          .col-md-12
+            .title-wrap.d-flex.justify-content-between
+              .title-box
+                h2.title-a Latest Properties
+              .title-link
+                a(href='property-grid.html')
+                  | All Property
+                  span.bi.bi-chevron-right
+        #property-carousel.swiper-container
+          .swiper-wrapper
+            each property in popular
+              .carousel-item-b.swiper-slide
+                .card-box-a.card-shadow
+                  .img-box-a
+                    img.img-a.img-fluid(src=property.image.url alt='')
+                  .card-overlay
+                    .card-overlay-a-content
+                      .card-header-a
+                        h2.card-title-a
+                          a(href='property-single.html')= title
+                      .card-body-a
+                        .price-box.d-flex
+                          span.price-a #{property.status} | $ 12.000
+                        a.link-a(href='#')
+                          | Click here to view
+                          span.bi.bi-chevron-right
+              // End carousel item
+        .propery-carousel-pagination.carousel-pagination
+    // End Latest Properties Section
+    section.section-agents.section-t8
+      .container
+        .row
+          .col-md-12
+            .title-wrap.d-flex.justify-content-between
+              .title-box
+                h2.title-a Our Properties
+        .row
+          .col-xl-4.col-md-4
+            .single_counter
+              h3.display-4
+                span.color-b 20+
+              p Properties for sale
+          .col-xl-4.col-md-4
+            .single_counter
+              h3.display-4
+                span.color-b 15
+              p Properties already sold
+          .col-xl-4.col-md-4
+            .single_counter
+              h3.display-4
+                span.color-b 15
+              p Properties for rent
+    // ======= Testimonials Section =======
+    section.section-testimonials.section-t8.nav-arrow-a
+      .container
+        .row
+          .col-md-12
+            .title-wrap.d-flex.justify-content-between
+              .title-box
+                h2.title-a Testimonials
+        #testimonial-carousel.swiper-container
+          .swiper-wrapper
+            .carousel-item-a.swiper-slide
+              .testimonials-box
+                .row
+                  .col-sm-12.col-md-6
+                    .testimonial-img
+                      img.img-fluid(src='/img/testimonial-1.jpg' alt='')
+                  .col-sm-12.col-md-6
+                    .testimonial-ico
+                      i.bi.bi-chat-quote-fill
+                    .testimonials-content
+                      p.testimonial-text
+                        | We used Preview Realtors to look for a hhouse, and we
+                        | cannot say we were disappointed. They were simply
+                        | fantastic, and we could never have found our dream
+                        | home without their help. Kudos to the team
+                    .testimonial-author-box
+                      img.testimonial-avatar(src='/img/mini-testimonial-1.jpg' alt='')
+                      h5.testimonial-author Albert &amp; Erika
+            // End carousel item
+            .carousel-item-a.swiper-slide
+              .testimonials-box
+                .row
+                  .col-sm-12.col-md-6
+                    .testimonial-img
+                      img.img-fluid(src='/img/testimonial-2.jpg' alt='')
+                  .col-sm-12.col-md-6
+                    .testimonial-ico
+                      i.bi.bi-chat-quote-fill
+                    .testimonials-content
+                      p.testimonial-text
+                        | We used Preview Realtors to look for a hhouse, and we
+                        | cannot say we were disappointed. They were simply
+                        | fantastic, and we could never have found our dream
+                        | home without their help. Kudos to the team.
+                    .testimonial-author-box
+                      img.testimonial-avatar(src='/img/mini-testimonial-2.jpg' alt='')
+                      h5.testimonial-author Pablo &amp; Emma
+            // End carousel item
+        .testimonial-carousel-pagination.carousel-pagination
+    // End Testimonials Section
+    // End #main
+    include includes/footer.pug

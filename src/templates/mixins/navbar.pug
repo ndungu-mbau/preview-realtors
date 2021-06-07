@@ -1,0 +1,90 @@
+mixin navbar(active)
+  //  ======= Property Search Section ======= 
+  .click-closed
+  // / Form Search Star /
+  .box-collapse
+    .title-box-d
+      h3.title-d Search Property
+    span.close-box-collapse.right-boxed.bi.bi-x
+    .box-collapse-wrap.form
+      form.form-a
+        .row
+          .col-md-12.mb-2
+            .form-group
+              label.pb-2(for='Type') Keyword
+              input.form-control.form-control-lg.form-control-a(type='text' placeholder='Keyword')
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='Type') Type
+              select.form-control.form-select.form-control-a#Type
+                option All Type
+                option For Rent
+                option For Sale
+                option Open House
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='city') Location
+              select.form-control.form-select.form-control-a#city
+                option All City
+                option Karen
+                option Muthaiga
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='bedrooms') Bedrooms
+              select.form-control.form-select.form-control-a#bedrooms
+                option Any
+                option 01
+                option 02
+                option 03
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='garages') Garages
+              select.form-control.form-select.form-control-a#garages
+                option Any
+                option 01
+                option 02
+                option 03
+                option 04
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='bathrooms') Bathrooms
+              select.form-control.form-select.form-control-a#bathrooms
+                option Any
+                option 01
+                option 02
+                option 03
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='price') Min Price
+              select.form-control.form-select.form-control-a#price
+                option Unlimited
+                option Ksh 150,000
+                option Ksh 200,000
+                option Ksh 300,000
+                option Ksh 500,000
+          .col-md-12
+            button.btn.btn-b(type='submit') Search Property
+  //  End Property Search Section
+  //  ======= Header/Navbar ======= 
+  nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
+    .container
+      button.navbar-toggler.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#navbarDefault' aria-controls='navbarDefault' aria-expanded='false' aria-label='Toggle navigation')
+        span
+        span
+        span
+      a.navbar-brand.text-brand(href='/')
+        img(src='/img/logo.png' alt='logo' height='50')
+        | Preview
+        span.color-b Realtors
+      .navbar-collapse.collapse.justify-content-center#navbarDefault
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/' class=`${active === 'home' ? 'active': ''}`) Home
+          li.nav-item
+            a.nav-link(href='/about' class=`${active === 'about' ? 'active': ''}`) About
+          li.nav-item
+            a.nav-link(href='/contact' class=`${active === 'contact' ? 'active': ''}`) Contact
+      button.btn.btn-b-n.navbar-toggle-box.navbar-toggle-box-collapse(type='button' data-bs-toggle='collapse' data-bs-target='#navbarTogglerDemo01')
+        i.bi.bi-search
+        |  > Search Properties
+  //  End Header/Navbar 
