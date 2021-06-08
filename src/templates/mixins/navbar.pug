@@ -7,61 +7,43 @@ mixin navbar(active)
       h3.title-d Search Property
     span.close-box-collapse.right-boxed.bi.bi-x
     .box-collapse-wrap.form
-      form.form-a
+      form.form-a(action='/properties' method='get')
         .row
           .col-md-12.mb-2
             .form-group
               label.pb-2(for='Type') Keyword
-              input.form-control.form-control-lg.form-control-a(type='text' placeholder='Keyword')
-          .col-md-6.mb-2
+              input.form-control.form-control-lg.form-control-a(type='text' placeholder='Keyword' name='keyword')
+          .col-md-12.mb-2
             .form-group.mt-3
               label.pb-2(for='Type') Type
-              select.form-control.form-select.form-control-a#Type
-                option All Type
-                option For Rent
-                option For Sale
-                option Open House
-          .col-md-6.mb-2
-            .form-group.mt-3
-              label.pb-2(for='city') Location
-              select.form-control.form-select.form-control-a#city
-                option All City
-                option Karen
-                option Muthaiga
+              select.form-control.form-select.form-control-a#Type(name='type')
+                option(value='') All Type
+                option(value='rent') For Rent
+                option(value='sale') For Sale
           .col-md-6.mb-2
             .form-group.mt-3
               label.pb-2(for='bedrooms') Bedrooms
-              select.form-control.form-select.form-control-a#bedrooms
-                option Any
-                option 01
-                option 02
-                option 03
-          .col-md-6.mb-2
-            .form-group.mt-3
-              label.pb-2(for='garages') Garages
-              select.form-control.form-select.form-control-a#garages
-                option Any
-                option 01
-                option 02
-                option 03
-                option 04
+              select.form-control.form-select.form-control-a#bedrooms(name='beds')
+                option(value='') Any
+                option(value='1') 01
+                option(value='2') 02
+                option(value='3') 03
           .col-md-6.mb-2
             .form-group.mt-3
               label.pb-2(for='bathrooms') Bathrooms
-              select.form-control.form-select.form-control-a#bathrooms
-                option Any
-                option 01
-                option 02
-                option 03
+              select.form-control.form-select.form-control-a#bathrooms(name='baths')
+                option(value='') Any
+                option(value='1') 01
+                option(value='2') 02
+                option(value='3') 03
           .col-md-6.mb-2
             .form-group.mt-3
-              label.pb-2(for='price') Min Price
-              select.form-control.form-select.form-control-a#price
-                option Unlimited
-                option Ksh 150,000
-                option Ksh 200,000
-                option Ksh 300,000
-                option Ksh 500,000
+              label.pb-2(for='min-price') Min Price
+              input.form-control.form-control-a#min-price(type="number" name="min")
+          .col-md-6.mb-2
+            .form-group.mt-3
+              label.pb-2(for='max-price') Max Price
+              input.form-control.form-control-a#max-price(type="number" name="max")
           .col-md-12
             button.btn.btn-b(type='submit') Search Property
   //  End Property Search Section
