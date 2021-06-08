@@ -7,7 +7,7 @@ block head
 block content
   +navbar('home')
   // ======= Intro Section =======
-  .intro.intro-carousel.swiper-container.position-relative
+  .intro.intro-carousel.swiper-container.position-relative.mt-5
     .swiper-wrapper
       each property in top
         .swiper-slide.carousel-item-a.intro-item.bg-image(style=`background-image: url(${property.image.url})`)
