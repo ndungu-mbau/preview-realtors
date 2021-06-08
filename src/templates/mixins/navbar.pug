@@ -68,15 +68,15 @@ mixin navbar(active)
   //  ======= Header/Navbar ======= 
   nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
     .container
-      button.navbar-toggler.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#navbarDefault' aria-controls='navbarDefault' aria-expanded='false' aria-label='Toggle navigation')
-        span
-        span
-        span
       a.navbar-brand.text-brand(href='/')
         img(src='/img/logo.png' alt='logo' height='50')
         | Preview
         span.color-b Realtors
-      .navbar-collapse.collapse.justify-content-center.mb-5#navbarDefault
+      button.navbar-toggler.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#navbarDefault' aria-controls='navbarDefault' aria-expanded='false' aria-label='Toggle navigation')
+        span
+        span
+        span
+      .navbar-collapse.collapse.justify-content-center#navbarDefault
         ul.navbar-nav
           li.nav-item
             a.nav-link(href='/' class=`${active === 'home' ? 'active': ''}`) Home
@@ -86,5 +86,4 @@ mixin navbar(active)
             a.nav-link(href='/contact' class=`${active === 'contact' ? 'active': ''}`) Contact
       button.btn.btn-b-n.navbar-toggle-box.navbar-toggle-box-collapse(type='button' data-bs-toggle='collapse' data-bs-target='#navbarTogglerDemo01')
         i.bi.bi-search
-        |  > Search Properties
   //  End Header/Navbar 
