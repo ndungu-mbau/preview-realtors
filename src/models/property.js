@@ -25,7 +25,15 @@ const PropertySchema = new Schema(
   { timestamps: { createdAt: 'created', updatedAt: 'updated' } }
 )
 
-PropertySchema.index({ title: 'text', description: 'text' })
+PropertySchema.index(
+  { title: 'text', description: 'text' },
+  {
+    weights: {
+      title: 5,
+      description: 2,
+    },
+  }
+)
 PropertySchema.plugin(autopopulate)
 
 export default mongoose.model('Property', PropertySchema)
