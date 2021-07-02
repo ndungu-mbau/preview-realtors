@@ -1,30 +1,59 @@
-// ======= Footer =======
-section.section-footer
+//- // ======= Footer =======
+//- section.section-footer.bg-primary.color-d
+//-   .container
+footer.bg-primary.color-text-b.mt-5.pt-4(style="border-radius:32px;")
   .container
     .row
-      .col-sm-12.col-md-4
-        img(src='/img/logo.png')
-      .col-sm-12.col-md-4
+      .col-sm-12.col-md-4.mt-5(style="display:flex;align-items:center;")
         .widget-a
           .w-header-a
             h3.w-title-a.text-brand Preview 
-              span.color-b Realtors
+              span.color-text-b Realtors
           .w-footer-a
             ul.list-unstyled
               li.color-a
-                span.color-text-a Phone: 020 221 1083
-footer
-  .container
+                span.color-text-b Phone: 020 221 1083
+      .col-md-4
+        .icon-box.section-b2
+          .icon-box-icon
+            span.bi.bi-envelope
+          .icon-box-content.table-cell
+            .icon-box-title
+              h4.icon-title Say Hello
+            .icon-box-content(style="text-align:left")
+              p.mb-1
+                | Email.
+                span.color-text-b gacherujames@yahoo.com
+              p.mb-1
+                | Phone.
+                span.color-text-b 020 221 1083
+              p.mb-1
+                | P.O. Box.
+                span.color-text-b 6574 - 00100, Nairobi, Kenya
+      .col-md-4.section-md-t3
+        .icon-box.section-b2
+          .icon-box-icon
+            span.bi.bi-geo-alt
+          .icon-box-content.table-cell
+            .icon-box-title
+              h4.icon-title Find us in
+            .icon-box-content(style="text-align:left")
+              p.mb-1
+                | Suite 503, 5<sup>th</sup> floor, Vedic House
+                br
+                | Mama Ngina Street, Nairobi
+                br
+                |  Kenya.
     .row
       .col-md-12
         nav.nav-footer
           ul.list-inline
             li.list-inline-item
-              a(href='/') Home
+              a.color-text-b(href='/') Home
             li.list-inline-item
-              a(href='/about') About
+              a.color-text-b(href='/about') About
             li.list-inline-item
-              a(href='/contact') Contact
+              a.color-text-b(href='/contact') Contact
         .socials-a
           ul.list-inline
             li.list-inline-item
@@ -37,8 +66,8 @@ footer
               a(href='#')
                 i.bi.bi-instagram(aria-hidden='true')
         .copyright-footer
-          p.copyright.color-text-a &copy; Copyright
-            span.color-a Preview Realtors Limited
+          p.copyright.color-text-b &copy; Copyright
+            span.color-text-b Preview Realtors Limited
             |  All Rights Reserved.
         .credits
           //

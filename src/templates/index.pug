@@ -19,7 +19,7 @@ block content
                   .col-lg-8
                     .intro-body
                       h1.intro-title.mb-4
-                        span.color-b= property.title
+                        span.color-a= property.title
                       p.intro-subtitle.intro-price
                         a(href=`/properties/${property._id}`)
                           span.price-a #{property.status} | View
@@ -36,7 +36,6 @@ block content
                 h2.title-a Popular Properties
               .title-link
                 a(href='/properties')
-                  | All Properties
                   span.bi.bi-chevron-right
         #property-carousel.swiper-container
           .swiper-wrapper.mh-100
@@ -66,14 +65,44 @@ block content
             .title-wrap.d-flex.justify-content-between
               .title-box
                 h2.title-a Our Properties
+              .title-link
+                a(href='/properties')
+                  | All Properties
+                  span.bi.bi-chevron-right
         .row
+          each property in popular
+            .col-md-3
+              .card
+                img.card-img-top(src=property.image.url)
+                .card-body
+                  h5.card-title= property.title
+                  p.card-text= property.description
+                  a.btn(href=`/properties/${property._id}`) View
+
+          each property in popular
+            .col-md-3.mt-3
+              .card
+                img.card-img-top(src=property.image.url)
+                .card-body
+                  h5.card-title= property.title
+                  p.card-text= property.description
+                  a.btn(href=`/properties/${property._id}`) View
+          each property in popular
+            .col-md-3
+              .card
+                img.card-img-top(src=property.image.url)
+                .card-body
+                  h5.card-title= property.title
+                  p.card-text= property.description
+                  a.btn(href=`/properties/${property._id}`) View
+        .row.mt-5
           .col-xl-4.col-md-6
-            .single_counter
+            a.single_counter(href='/properties?keyword=&type=sale')
               h3.display-4
                 span.color-b #{for_sale}
               p Properties for sale
           .col-xl-4.col-md-6
-            .single_counter
+            a.single_counter(href='/properties?keyword=&type=rent')
               h3.display-4
                 span.color-b #{for_rent}
               p Properties for rent

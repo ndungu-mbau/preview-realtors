@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
     await controller.queryset({
       query: {
         $text: {
-          $search: req.query.keyword,
+          $search: req.query.keyword || '',
         },
       },
     })
