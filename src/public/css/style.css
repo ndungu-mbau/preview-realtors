@@ -124,7 +124,7 @@ a:hover {
 }
 
 .color-b {
-  color: #2c3590;
+  color: #27abe2;
 }
 
 .color-d {
@@ -133,6 +133,10 @@ a:hover {
 
 .bg-primary{
   background-color: #2c3590 !important;
+}
+
+.bg-secondary{
+  background-color: #27abe2 !important;
 }
 
 .color-text-a {
@@ -145,8 +149,17 @@ a:hover {
   color: #adadad;
 }
 
+.color-text-c {
+  text-decoration: none;
+  color: #f5f5f5;
+}
+
 .no-margin {
   margin: 0;
+}
+
+.border-curved{
+  border-radius: 24px;
 }
 
 /*------/ Nav Pills  /------*/
