@@ -71,7 +71,7 @@ block content
                   span.bi.bi-chevron-right
         .row
           each property in popular
-            .col-md-3
+            .col-md-3.mt-3
               .card
                 img.card-img-top(src=property.image.url)
                 .card-body
@@ -88,7 +88,7 @@ block content
                   p.card-text= property.description
                   a.btn(href=`/properties/${property._id}`) View
           each property in popular
-            .col-md-3
+            .col-md-3.mt-3
               .card
                 img.card-img-top(src=property.image.url)
                 .card-body
@@ -97,12 +97,12 @@ block content
                   a.btn(href=`/properties/${property._id}`) View
         .row.mt-5
           .col-xl-4.col-md-6
-            a.single_counter(href='/properties?keyword=&type=sale')
+            a.single_counter(href='/properties?keyword=sale&type=sale')
               h3.display-4
                 span.color-b #{for_sale}
               p Properties for sale
           .col-xl-4.col-md-6
-            a.single_counter(href='/properties?keyword=&type=rent')
+            a.single_counter(href='/properties?keyword=rent&type=rent')
               h3.display-4
                 span.color-b #{for_rent}
               p Properties for rent
