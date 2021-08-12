@@ -39,27 +39,20 @@ router.get('/', async (req, res, next) => {
     return true
   })
 
-  const populatedLocations = await Promise.all(
-    locations.map(async (location) => {
-      const properties = await propertyController.queryset({
-        query: { location: location._id },
-      })
-      // console.log(properties)
-      location.properties = properties
-      return location
+  const properties = locations.filter(async (location) => {
+    const properties = await propertyController.queryset({
+      query: { location: location._id },
     })
-  )
 
-  // console.log(populatedLocations)
-
-  const properties = populatedLocations.filter((location) => {
-    return location.properties.some((individual) => {
+    console.log(properties)
+    
+    return properties.some((individual) => {
       const { beds, baths } = query
       return true
     })
   })
 
-  console.log(properties)
+  // console.log(properties)
   res.render('properties', { properties })
 })
 
