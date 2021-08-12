@@ -1,6 +1,6 @@
 import Property from '../models/property'
-import createControllers from './base'
+import createController from './base'
 
-const controllers = createControllers(Property)
+const controller = createController(Property)
 
-export default controllers
+export default controller

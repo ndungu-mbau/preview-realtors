@@ -41,7 +41,7 @@ block content
             .col-md-4
               .card-box-a.card-shadow
                 .img-box-a
-                  img.img-a.img-fluid(src=property.image.url alt=property.title)
+                  img.img-a.img-fluid(src=property.picture.url alt=property.title)
                 .card-overlay
                   .card-overlay-a-content
                     .card-header-a
@@ -50,7 +50,7 @@ block content
                     .card-body-a
                       .price-box.d-flex
                         span.price-a= property.status
-                      a.link-a(href=`/properties/${property._id}`) Click here to view
+                      a.link-a(href=`/locations/${property._id}`) Click here to view
                         span.bi.bi-chevron-right
                     .card-footer-a
                       ul.card-info.d-flex.justify-content-around
