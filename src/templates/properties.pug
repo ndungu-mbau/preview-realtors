@@ -37,26 +37,31 @@ block content
                   option(value='1') New to Old
                   option(value='2') For Rent
                   option(value='3') For Sale
-          each property in properties
-            .col-md-4
-              .card-box-a.card-shadow
-                .img-box-a
-                  img.img-a.img-fluid(src=property.picture.url alt=property.title)
-                .card-overlay
-                  .card-overlay-a-content
-                    .card-header-a
-                      h2.card-title-a
-                        a(href='#')= property.title
-                    .card-body-a
-                      .price-box.d-flex
-                        span.price-a= property.status
-                      a.link-a(href=`/locations/${property._id}`) Click here to view
-                        span.bi.bi-chevron-right
-                    .card-footer-a
-                      ul.card-info.d-flex.justify-content-around
-                        li
-                          h4.card-info-title Property ID
-                          span= property.property_id
+          if properties.length
+            each property in properties
+              .col-md-4
+                .card-box-a.card-shadow
+                  .img-box-a
+                    img.img-a.img-fluid(src=property.picture.url alt=property.title)
+                  .card-overlay
+                    .card-overlay-a-content
+                      .card-header-a
+                        h2.card-title-a
+                          a(href='#')= property.title
+                      .card-body-a
+                        .price-box.d-flex
+                          span.price-a= property.status
+                        a.link-a(href=`/locations/${property._id}`) Click here to view
+                          span.bi.bi-chevron-right
+                      .card-footer-a
+                        ul.card-info.d-flex.justify-content-around
+                          li
+                            h4.card-info-title Property ID
+                            span= property.property_id
+          else
+            .row.justify-content-center
+              .col-md-12
+                img.img-responsive(src="/img/not-found.png")    
         .row
           .col-sm-12
             nav.pagination-a
