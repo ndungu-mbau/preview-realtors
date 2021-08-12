@@ -102,29 +102,28 @@ block content
                   .col-sm-12
                     .title-box-d
                      h3.title-d Contact Agent 
-              .col-md-12.col-lg-4
-                .property-contact
-                  form.form-a(action='/api/feedback' method='post')
-                    .row
-                      .col-md-12.mb-1
-                        .form-group
-                          input.form-control.form-control-lg.form-control-a#inputName(name='name' type='text' placeholder='Name *' required)
-                      .col-md-12.mb-1
-                        .form-group
-                          input.form-control.form-control-lg.form-control-a#inputEmail1(name='email' type='email' placeholder='Email *' required)
-                      .col-md-12.mb-1
-                        .form-group
-                          input.form-control.form-control-lg.form-control-a#inputSubject(name='subject' type='email' placeholder='Subject *' required)
-                      .col-md-12.mb-1
-                        .form-group
-                          textarea#textMessage.form-control(placeholder='Comment *' name='message' cols='45' rows='8' required)
-                      .col-md-12.my-3
-                        .mb-3
-                          .loading Loading
-                          .error-message
-                          .sent-message Your message has been sent. Thank you!
-                      .col-md-12.mt-3
-                        button.btn.btn-a(type='submit') Send Message                                 
+          .col-sm-12.section-t8
+            form.php-email-form(action='/api/feedback' method='post' role='form')
+              .row
+                .col-md-6.mb-3
+                  .form-group
+                    input.form-control.form-control-lg.form-control-a(type='text' name='name' placeholder='Your Name' required='')
+                .col-md-6.mb-3
+                  .form-group
+                    input.form-control.form-control-lg.form-control-a(name='email' type='email' placeholder='Your Email' required='')
+                .col-md-12.mb-3
+                  .form-group
+                    input.form-control.form-control-lg.form-control-a(type='text' name='subject' placeholder='Subject' required='')
+                .col-md-12
+                  .form-group
+                    textarea.form-control(name='message' cols='45' rows='8' placeholder='Message' required='')
+                .col-md-12.my-3
+                  .mb-3
+                    .loading Loading
+                    .error-message
+                    .sent-message Your message has been sent. Thank you!
+                .col-md-12.text-center
+                  button.btn.btn-a(type='submit') Send Message                                
     //-         .row
     //-           .col-md-6.col-lg-4
     //-             img.img-fluid(src=property.agent.profile.url alt=property.agent.full_name)
