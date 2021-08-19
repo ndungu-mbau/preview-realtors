@@ -11,9 +11,12 @@
     "debug": "babel-node debug ./src"
   },
   "dependencies": {
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/mongoose": "^1.1.0",
     "@babel/node": "^7.14.2",
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.14.0",
+    "admin-bro": "^4.0.1",
     "babel-preset-env": "^1.7.0",
     "cloudinary": "^1.25.1",
     "cookie-parser": "~1.4.4",
@@ -21,7 +24,9 @@
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
+    "express-formidable": "^1.2.0",
     "express-hbs": "^2.4.0",
+    "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.11",
@@ -29,7 +34,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "pug": "^3.0.2",
-    "streamifier": "^0.1.1"
+    "streamifier": "^0.1.1",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",

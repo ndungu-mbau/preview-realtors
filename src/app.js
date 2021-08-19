@@ -4,7 +4,7 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-import mongoose from 'mongoose'
+import './utils/connection'
 import multer from 'multer'
 import streamifier from 'streamifier'
 import { v2 as cloudinary } from 'cloudinary'
@@ -14,26 +14,15 @@ import Upload from './models/upload'
 import apiViews from './views/api'
 import siteViews from './views/site'
 
-const { NODE_ENV, CLOUDINARY_URL, API_KEY, API_SECRET, CLOUD_NAME } =
-  process.env
+import admin, { adminBro } from './admin'
+
+const { API_KEY, API_SECRET, CLOUD_NAME } = process.env
 
 cloudinary.config({
   api_key: API_KEY,
   api_secret: API_SECRET,
   cloud_name: CLOUD_NAME,
 })
-
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-})
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', () => {
-  console.log('Database connected')
-})
-mongoose.set('returnOriginal', true)
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -50,6 +39,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(adminBro.options.rootPath, admin)
 
 app.use('/', siteViews)
 app.use('/api', apiViews)
